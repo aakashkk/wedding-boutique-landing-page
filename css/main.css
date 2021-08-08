@@ -1,17 +1,18 @@
-/******** HEX COLORS ***************/
-/*
-** Primary - #F57373
-** Seconary - #AD1896
-** Secondary 2 - #FB9469
-** Accent - #FDB70E
-*/
-
 /******GLOBAL STYLES****************/
+:root {
+    --primary-color: #f9716d;
+    --background-opace: rgba(155, 155, 155, 0.68);
+    --secondary-color: #AD1896;
+    --accent-color: #FDB70E;
+}
+
+html {
+    font-size: 18px;
+}
 
 body{
     margin: 0px;
     padding: 0px;
-
     /*Background*/
     background-image: url("../img/wedding_dress_fashion.jpeg");
     background-size: cover;
@@ -20,31 +21,31 @@ body{
 
 h1{
     font-family: 'Playfair Display', serif;
-    font-size: 40px;
+    font-size: 2.2rem;
     font-weight: 900;
 }
 
 h3{
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: 700;
 }
 
 h5{
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
 h6{
     font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    font-size: 1.2rem;
     font-weight: 900;
 }
 
 p{
     font-family: 'Judson', serif;
-    font-size: 20px;
+    font-size: 1.1rem;
 }
 
 ul{
@@ -57,7 +58,7 @@ li{
 }
 
 button{
-    background: #f9716d;
+    background: var(--primary-color);
     border: none;
     width: 90px;
     height: 50px;
@@ -69,14 +70,13 @@ button{
 #splashpage-nav{
     height: 100px;
     width: 100%;
-    background-color: rgba(134, 134, 134, 0.45);
-    display: grid;
-    grid-template-columns: 10fr 1fr;
+    background-color: var(--background-opace);
+    display: flex;
 }
 
 #splashpage-nav .container{
     display: grid;
-    grid-template-columns: 3fr 2fr 2fr;
+    grid-template-columns: 4fr 2fr;
     width: 90vw;
 }
 
@@ -88,11 +88,12 @@ button{
     margin-bottom: 10px;
     display: inline;
     margin-left: 20px;
+    color: white;
 }
 
 #splashpage-nav li a{
     text-decoration: none;
-    color: #AD1896;
+    color: var(--secondary-color);
     font-size: 18px;
 }
 
@@ -106,30 +107,31 @@ button{
 }
 
 #store-info{
-    margin-right: 75px;
     display: grid;
     grid-template-rows: 0.5fr 0.5fr;
     grid-row-gap: 1px;
-    color: #AD1896;
+    color: var(--secondary-color);
 }
 
 /* Main Content */
 #splashpage{
+    /*H & W */
+    width: 100%;
+    height: auto;
+}
+
+.main-grid {
     /* Grid */
     display: grid;
     grid-template-columns: 5% 95%;
     align-content: center;
     grid-template-areas: "a b"; 
-    
-    
-    /*H & W */
     width: 100%;
-    height: 100vh;
 }
 
-#header-text{
+#header-text-div{
     height: 500px;
-    width: 500px;
+    width: auto;
     margin: 0 auto;
     display: grid;
     align-content: center;
@@ -137,9 +139,9 @@ button{
 }
 
 .heading-1{
-    font-size: 62px;
+    font-size: 3rem;
     font-weight: 900;
-    color: #F57373;
+    color: var(--primary-color);
     text-align: center;   
 }
 
@@ -150,13 +152,18 @@ button{
 
 #social-profiles{
     grid-area: a;
-    
+    display: inline-grid;
 }
+
+#btn-div {
+    text-align: center;
+}
+
 /* Font Awesome */
 .fab{
-    font-size: 35px;
+    font-size: 1.5rem;
     margin-bottom: 45px;
-    color: #FDB70E;
+    color: var(--accent-color);
 }
 
 .fa-bars{
@@ -164,19 +171,104 @@ button{
     justify-self: end;
 }
 
+#hamburger {
+    cursor: pointer;
+    float: right;
+    margin-top: 2rem;
+    color: var(--secondary-color);
+}
 
 /****** MEDIA QUERIES *********/
 
-@media screen and (min-width: 320px) and (max-width: 1300px){
-    /* Main Content */
-    body{
+@media screen and (min-width: 320px) and (max-width: 992px) {
+    body {
+        background-position-y: 0rem;
+        background-size: 40rem;
+    }
+
+    #social-profiles li {
+        margin: 2rem 3rem;
     }
 }
 
-/* Mobile Screens*/
-@media screen and (min-width: 320px) and (max-width: 414px){
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+    .main-grid {
+        display: flex;
+        width: 100%;
+        flex-direction: column-reverse;
+        height: 90vh;
+    }
+
+    #social-profiles {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        background: rgb(0 0 0 / 45%);
+        margin: 0px;
+        padding: 0;
+    }
+
+    #toggle-menu {
+        display: none;
+        background: var(--background-opace);
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 100px;
+    }
+
+    #hamburger {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 414px) {
+    #social-profiles li {
+        margin: 2rem;
+    }
+
+    html {
+        font-size: 16px;
+    }
     body{
         background-position-y: center;
         background-position-x: center;
+        background-size: 60rem;
+    }
+
+    .heading-1 {
+        font-size: 2.5rem;
+    }
+
+ 
+}
+
+@media screen and (min-width: 540px) and (max-width: 1024px) {
+    #social-profiles li {
+        margin: 2rem 4rem;
+    }
+
+    #toggle-menu {
+        width: 100%;
+        background: var(--background-opace);
+        left: 0;
+        position: absolute;
+        top: 100px;
+    }
+
+    #header-text-div{
+        height: 55rem;
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+    #hamburger {
+        display: none;
+    }
+
+    #toggle-menu {
+        display: block;
     }
 }
